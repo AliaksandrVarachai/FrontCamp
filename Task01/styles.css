@@ -1,0 +1,50 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+main {
+	width: 1000px;
+	background: whitesmoke;
+	margin: 0 auto;
+	position: relative;
+}
+header, footer {
+	height: 100px;
+	background: SkyBlue;
+	text-align: center;
+	line-height: 100px;
+}
+nav {
+	height: 50px;
+	background: steelblue;
+	text-align: center;
+	line-height: 50px;
+}
+article {
+	padding: 10px 260px 40px 10px;
+}
+aside {
+	width: 250px;
+	position: absolute;
+	left: 750px;
+	top: 150px;
+	background: azure;
+	height: 200px;
+}
+section li {
+	list-style-type: none;
+}
+
+section li a {
+	text-decoration: none;
+}
+
+.buttom-article {
+	text-align: center;
+	line-height: 20px;
+}
+
+
+
+
