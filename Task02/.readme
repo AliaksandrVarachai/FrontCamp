@@ -1,0 +1,8 @@
+Firstly install the browserify with npm globally (local installation does not have CLI):
+
+npm install -g browserify
+
+Then carry out the next commands to run the Babel transformation:
+
+npm run build
+npm run browserify
