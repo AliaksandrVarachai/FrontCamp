@@ -1,5 +1,5 @@
 require("babel-polyfill");
-//require("babel-runtime");
+require("whatwg-fetch");
 
 const responseFormat = "json";
 const apiKey = "883c9597c1166a747b0aae229fe79970:18:74940799";
