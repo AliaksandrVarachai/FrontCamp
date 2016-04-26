@@ -7,7 +7,8 @@ module.exports = {
 	context: __dirname + "/frontend",
 	entry: {
 		home: "./home",
-		about: "./about"
+		about: "./about",
+		common: "./common"
 	},
 	output: {
 		path: __dirname + "/public", //it's better use absolute path
@@ -28,6 +29,7 @@ module.exports = {
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: "common"
+			//minChunks: 2 //we can ['module1', 'module2'] - common code for modules
 		})
 	],
 	resolve: {
