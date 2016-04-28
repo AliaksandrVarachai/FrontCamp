@@ -3,18 +3,21 @@
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require("webpack");
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-	context: __dirname + "/app/scripts",
+	context: __dirname + "/",
 	entry: {
-		index: "./app"
+		"scripts/app": "./src/scripts/app",
+		"styles/styles": "./src/styles/styles"
 	},
 	output: {
-		path: __dirname + "/public/scripts", //it's better use absolute path
-		//publicPath: "/scripts/",  //for local http server
-		publicPath: __dirname + "/public/scripts/",  //file protocol
-		filename: "[name].js",
-		library: "[name]"
+		path: __dirname + "/public/", //it's better use absolute path
+		//publicPath: "/",  //for local http server
+		publicPath: __dirname + "/public/",  //file protocol (!!!not forget about the last /)
+		chunkFilename: "./scripts/core/[name].js",
+		filename: "[name].js"
+		//library: "[name]"  //chaining is impossible for "/" in the name of librari
 	},
 	watch: NODE_ENV == "development",
 
@@ -29,22 +32,22 @@ module.exports = {
 			NODE_ENV: JSON.stringify(NODE_ENV)
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: "common"
+			name: "/scripts/common"
 			//minChunks: 2 //we can ['module1', 'module2'] - common code for modules
-		})
+		}),
+		new ExtractTextPlugin("[name].css", {allChunks: true})
 	],
 	resolve: {
-		modulesDorectories: ["node_modules"],
-		extensions: ["", ".js"]
+		modulesDirectories: ["node_modules"],
+		extensions: ["", ".js", ".css", ".less"]
 	},
 	resolveLoader: {
-		modulesDorectories: ["node_modules"],
+		modulesDirectories: ["node_modules"],
 		moduleTemplates: ["*-loader", "*"],
 		extensions: ["", ".js"]
 	},
 	module: {
 		loaders: [{
-			//test: /app\/scripts\/[^\/]*\.js$/,
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loader: "babel", //"babel?presets[]=es2015" is the same
@@ -52,6 +55,17 @@ module.exports = {
 				presets: ["es2015"],
 				plugins: ["transform-runtime"]
 			}
+		},
+		{
+			test: /\.css$/,
+			exclude: /node_modules/,
+			loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+			//loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+		},
+		{
+			test: /\.less$/,
+			//context: __dirname + "/src/styles/styles.less",  //doesn't work!
+			loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
 		}]
 	}
 };

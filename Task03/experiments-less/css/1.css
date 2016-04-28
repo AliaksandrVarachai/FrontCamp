@@ -1,0 +1,11 @@
+/* Mixin */
+div {
+  color: #ff0000;
+}
+/* Mixin */
+/* Implementation */
+#somediv {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
