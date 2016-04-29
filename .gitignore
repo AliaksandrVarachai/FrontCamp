@@ -1,6 +1,9 @@
 # installed node modules
 **/node_modules
 
+# ignore webstorm files
+**/.idea
+
 # loggers
 *.log
 
