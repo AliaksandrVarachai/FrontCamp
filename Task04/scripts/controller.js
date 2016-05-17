@@ -63,7 +63,8 @@ model.initialize(sections);
 let newsPiece = new NewsPiece(responseFormat, apiKey, model.sectionGenerator.next().value); //implementation of a class
 let json = newsPiece.responseJSON;
 model.setRequestResults(json);
-view.setRequestResults(json, newsPiece.section);
+view.initialize(infoIdMap, model.sectionGenerator, newsPiece);
+view.showRequestResults(json);
 
 
 //let sectionGenerator = model.SectionGenerator();
