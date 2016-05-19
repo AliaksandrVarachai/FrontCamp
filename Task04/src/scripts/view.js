@@ -1,4 +1,6 @@
-let model = require("./model");
+//let model = require("./model");  //mediator instead
+let constants = require("./constants");
+let mediator = require("./mediator");
 let article = document.getElementById("article");
 let articleSection = document.getElementById("section");
 let nav = document.getElementById("nav");
@@ -49,7 +51,7 @@ function getNewLinksHTMLTag(listOfItems, id="list-of-articles", className="list-
 function showArticleMetaInfo(infoIndex) {
     if (infoIndex > -1) {
         for (let key of infoIdMap.keys()) {
-            document.getElementById(key).innerHTML = model.getInfoArray()[infoIndex][infoIdMap.get(key)];
+            document.getElementById(key).innerHTML = mediator.getInfoArray()[infoIndex][infoIdMap.get(key)];
         }
     } else {
         for (let key of infoIdMap.keys()) {
@@ -73,12 +75,21 @@ function highlightArticle(target) {
     }
 }
 
-//direct connection with model is only by subscribe, indirect is by controller
-model.infoArrayObserver.subscribe(function() {
-    document.getElementById("info-main-section-text").innerHTML = model.newsPiece.section;
+//direct connection with mediator->model is only by subscribe, indirect is by controller
+mediator.infoArrayObserver.subscribe(function() {
+    if (constants.debug_mode) {
+        console.log("infoArray is loaded");
+    }
+    document.getElementById("info-main-section-text").innerHTML = mediator.newsPiece.section;
     currentInfoIndex = -1;
     showArticleMetaInfo(currentInfoIndex);
-    document.getElementById("article").appendChild(getNewLinksHTMLTag(model.getInfoArray()));
+    document.getElementById("article").appendChild(getNewLinksHTMLTag(mediator.getInfoArray()));
+});
+
+mediator.infoArrayNextObserver.subscribe(function() {
+    if (constants.debug_mode) {
+        console.log("infoArrayNext is loaded");
+    }
 });
 
 article.addEventListener("mouseover", function(event) {
