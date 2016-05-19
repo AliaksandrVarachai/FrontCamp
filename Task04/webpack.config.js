@@ -8,15 +8,14 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
 	context: __dirname + "/",
 	entry: {
-		"scripts/app": "./src/scripts/app",
-		"styles/styles": "./src/styles/styles"
+		"app": "./src/scripts/app"
 	},
 	output: {
 		path: __dirname + "/public/", //it's better use absolute path
 		//publicPath: "/",  //for local http server
 		publicPath: __dirname + "/public/",  //file protocol (!!!not forget about the last /)
-		chunkFilename: "./scripts/core/[name].js",
-		filename: "[name].js"
+		//chunkFilename: "./scripts/core/[name].js", //duplicate CommonsChinkPlugin parameters
+		filename: "/scripts/[name].js"
 		//library: "[name]"  //chaining is impossible for "/" in the name of librari
 	},
 	watch: NODE_ENV == "development",
@@ -24,22 +23,23 @@ module.exports = {
 	watchOptions: {
 		aggregateTimeout: 100
 	},
-	//devtool: NODE_ENV == "development" ? "eval" : null,
-	devtool: null,
+	devtool: NODE_ENV == "development" ? "source-map" : null,
+	//devtool: null,
 	plugins: [
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: "/scripts/common"
+			name: "/chunks/common-chunk"
 			//minChunks: 2 //we can ['module1', 'module2'] - common code for modules
 		}),
-		new ExtractTextPlugin("[name].css", {allChunks: true})
+		new ExtractTextPlugin("styles/styles.css", {allChunks: true}),
+		new webpack.OldWatchingPlugin()  //fix of a bug: ExtractTextPlugin disables watch 
 	],
 	resolve: {
 		modulesDirectories: ["node_modules"],
-		extensions: ["", ".js", ".css", ".less"]
+		extensions: ["", ".js", ".css"]
 	},
 	resolveLoader: {
 		modulesDirectories: ["node_modules"],
@@ -58,15 +58,9 @@ module.exports = {
 		},
 		{
 			test: /\.css$/,
-			exclude: /node_modules/,
 			loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-			//loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-		},
-		{
-			test: /\.less$/,
-			//context: __dirname + "/src/styles/styles.less",  //doesn't work!
-			loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-		}]
+		}
+		]
 	}
 };
 

@@ -1,5 +1,4 @@
-function Event(sender) {
-    this._sender = sender;
+function Event() {
     this._listeners = [];
 }
 

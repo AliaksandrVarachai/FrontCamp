@@ -1,0 +1,107 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	font-family: arial;
+}
+main {
+	width: 1000px;
+	background: whitesmoke;
+	margin: 0 auto;
+	position: relative;
+}
+header, footer {
+	background: SkyBlue;
+	text-align: center;
+}
+header {
+	height: 100px;
+	line-height: 100px;
+	font-size: 60px;
+	color: powderblue;
+}
+footer {
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+	color: ivory;
+}
+nav {
+	height: 50px;
+	background: steelblue;
+	text-align: center;
+	line-height: 50px;
+}
+nav:hover {
+	cursor: pointer;
+}
+nav > .text{
+	display: inline-block;
+	vertical-align: middle;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+nav > .next-mark {
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 0 10px 20px;
+	border-color: transparent transparent transparent white;
+}
+
+article {
+	padding: 10px 260px 40px 10px;
+	position: relative;
+	min-height: 300px;
+}
+aside {
+	float: right;
+	background: azure;
+	height: 100%;
+	margin-right: -260px; /* 250+10 */
+	margin-top: -10px;
+	padding: 10px 10px 40px 10px;
+	width: 240px; /* 250-10 */ 
+}
+aside > div {
+	margin: 20px 0;
+}
+aside .title {
+	font-weight: bold;
+}
+aside .title, aside .text {
+	color: darkcyan;
+}
+aside .main-text {
+	font-size: 150%;
+	font-weight: bold;
+	color: steelblue;
+	text-transform: uppercase;
+}
+
+section li {
+	list-style-type: none;
+}
+section li:nth-child(odd) {
+	background: moccasin;
+}
+
+section li a {
+	text-decoration: none;
+	display: block;
+	padding: 5px 10px;
+	color: #000080;
+}
+section .selected {
+	background: #FFFFCC;
+}
+
+.buttom-article {
+	text-align: center;
+	line-height: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map*/

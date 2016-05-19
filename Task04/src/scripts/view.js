@@ -6,12 +6,11 @@ let navSectionName = document.getElementById("nav-section-name");
 let currentInfoIndex;
 
 let infoIdMap = new Map(); //keys: id in html; values: name in request
-infoIdMap["info-section-text"] = "section";
-infoIdMap["info-abstract-text"] = "abstract";
-infoIdMap["info-subsection-text"] = "subsection";
-infoIdMap["info-published-date-text"] = "published_date";
-infoIdMap["info-byline-text"] = "byline";
-
+infoIdMap.set("info-section-text", "section");
+infoIdMap.set("info-abstract-text", "abstract");
+infoIdMap.set("info-subsection-text", "subsection");
+infoIdMap.set("info-published-date-text", "published_date");
+infoIdMap.set("info-byline-text", "byline");
 
 /**
  * creates and returns new tags which contains enumerated hrefs
@@ -50,7 +49,7 @@ function getNewLinksHTMLTag(listOfItems, id="list-of-articles", className="list-
 function showArticleMetaInfo(infoIndex) {
     if (infoIndex > -1) {
         for (let key of infoIdMap.keys()) {
-            document.getElementById(key).innerHTML = infoArray[infoIndex][infoIdMap.get(key)];
+            document.getElementById(key).innerHTML = model.getInfoArray()[infoIndex][infoIdMap.get(key)];
         }
     } else {
         for (let key of infoIdMap.keys()) {
@@ -74,6 +73,7 @@ function highlightArticle(target) {
     }
 }
 
+//direct connection with model is only by subscribe, indirect is by controller
 model.infoArrayObserver.subscribe(function() {
     document.getElementById("info-main-section-text").innerHTML = model.newsPiece.section;
     currentInfoIndex = -1;

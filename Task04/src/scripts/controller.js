@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let firstNewsClickListener = function() {
         view.navSectionName.innerHTML = "Next section of news";
         this.removeEventListener("click", firstNewsClickListener);
+        model.requestInfoArray();
         this.addEventListener("click", function() {
             model.requestInfoArray();
         });
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-export {}
+//export {}
 
 
 

@@ -1,4 +1,4 @@
-let Event = require("./event");
+let events = require("./events");
 let infoArray; //contains info about articles
 
 const responseFormat = "json";
@@ -33,7 +33,7 @@ function* SectionGenerator(sections) {
     }
 }
 
-let sectionGenerator = SecitionGenerator(sections);
+let sectionGenerator = SectionGenerator(sections);
 
 class NewsPiece {
     constructor(responseFormat, apiKey) {
@@ -63,17 +63,17 @@ function requestJSON(url) {
         .catch( ex => console.log("NYT error: wrong url or section", ex));
 }
 
-let infoArrayObserver = new Event();
+let infoArrayObserver = new events.Event();
 
 function getInfoArray() {
     return infoArray;
 }
 
 function requestInfoArray() {
-    newsPiece.section = sectionGenerator.next().value();
+    newsPiece.section = sectionGenerator.next().value;
     requestJSON(newsPiece.url).then(
         json => {
-            infoArray = newInfoArray;
+            infoArray = json.results;
             infoArrayObserver.notify();
         }
     );
