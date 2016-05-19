@@ -1,55 +1,27 @@
 let Event = require("./event");
 let infoArray; //contains info about articles
-let sectionGenerator; //generators of news sections
 
-let events = {
-    nextSection: new Event(),      //next section for Event is chosen
-    highlightNews: new Event(),    //line with a piece of news is highlighted
-    domContentLoaded: new Event(), //for any case
-    infoArrayUpdated: new Event(), //json.then happened
-    sectionUpdated: new Event(),   //section was changed (e.g. by user)
-}
-
-function getNextSection() {
-    let nextSection = sectionGenerator();
-    events.nextSection.notify();
-    return nextSection;
-}
-
-// function nextSectionChosen() {
-//     nextSection.notify();
-//     return
-// }
-
-// function highlightNewsHappened() {
-//     highlightNews.notify();
-// }
-
-// function domContentLoadedHappened() {
-//     domContentLoaded.notify();
-// }
-
-/*function updateInfoArrayAndNotify(newInfoArray) {
-    infoArray = newInfoArray;
-    events.infoArrayUpdated.notify();
-}*/
-
-function getInfoArray() {
-    return infoArray;
-}
-
-function initialize(sections) {
-    sectionGenerator = SectionGenerator(sections);
-}
-
-function setRequestResultsAndNotify(json) {
-    json.then(
-        json => {
-            infoArray = json.results;
-            updateInfoArrayAndNotify(infoArray);
-        }
-    );
-}
+const responseFormat = "json";
+const apiKey = "883c9597c1166a747b0aae229fe79970:18:74940799";
+const sections = [
+    "home",
+    "world",
+    "national",
+    "politics",
+    "nyregion",
+    "business",
+    "opinion",
+    "technology",
+    "science",
+    "health",
+    "sports",
+    "arts",
+    "fashion",
+    "dining",
+    "travel",
+    "magazine",
+    "realestate"
+];
 
 //loop of all sections
 function* SectionGenerator(sections) {
@@ -61,12 +33,55 @@ function* SectionGenerator(sections) {
     }
 }
 
+let sectionGenerator = SecitionGenerator(sections);
+
+class NewsPiece {
+    constructor(responseFormat, apiKey) {
+        this._responseFormat = responseFormat;
+        this._apiKey = apiKey;
+    }
+    createUrl() {
+        this._url = `http://api.nytimes.com/svc/topstories/v1/${this._section}.${this._responseFormat}?api-key=${this._apiKey}`;
+    }
+    set section(section) {
+        this._section = section;
+        this.createUrl();
+    }
+    get section() {
+        return this._section;
+    }
+    get url() {
+        return this._url;
+    }
+}
+
+let newsPiece = new NewsPiece(responseFormat, apiKey);
+
+function requestJSON(url) {
+    return fetch(url)
+        .then( response => response.json())
+        .catch( ex => console.log("NYT error: wrong url or section", ex));
+}
+
+let infoArrayObserver = new Event();
+
+function getInfoArray() {
+    return infoArray;
+}
+
+function requestInfoArray() {
+    newsPiece.section = sectionGenerator.next().value();
+    requestJSON(newsPiece.url).then(
+        json => {
+            infoArray = newInfoArray;
+            infoArrayObserver.notify();
+        }
+    );
+}
+
 export {
-    initialize,
-    setRequestResultsAndNotify,
-    sectionGenerator,
-    events,
-    updateInfoArrayAndNotify,
+    newsPiece,
+    infoArrayObserver,
     getInfoArray,
-    getNextSection,
+    requestInfoArray,
 };

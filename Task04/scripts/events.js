@@ -20,10 +20,9 @@ Event.prototype = {
         }
         return null;
     },
-    notify: function(args) {
-        //var args = [].slice.call(arguments, 0);
+    notify: function() {
         for (let i = 0; i < this._listeners.length; i++) {
-            this._listeners[i](this._sender, args);
+            this._listeners[i]();
         }
     }
 }
