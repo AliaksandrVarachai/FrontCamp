@@ -15,3 +15,6 @@
 **/Task03/experiments/public/*.js.map
 **/Task03/experiments-require/public/*.js
 **/Task03/experiments-require/public/*.js.map
+
+# test coverage reports
+**/coverage
