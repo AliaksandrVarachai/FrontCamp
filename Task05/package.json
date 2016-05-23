@@ -1,14 +1,17 @@
 {
-  "name": "Task03",
+  "scripts": {
+    "test": "karma start"
+  },
+  "name": "Task05",
   "version": "v0.0.1",
-  "description": "Task03",
+  "description": "Task05",
   "repository": {
     "type": "git",
     "url": "https://github.com/AliaksandrVarachai/FrontCamp.git"
   },
+
   "license": "gnuplot",
   "devDependencies": {
-    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.7.5",
@@ -17,8 +20,15 @@
     "babel-runtime": "^6.6.1",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
-    "less": "^2.6.1",
-    "less-loader": "^2.2.3",
+    "isparta": "^4.0.0",
+    "isparta-loader": "^2.0.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "whatwg-fetch": "^0.11.0"
