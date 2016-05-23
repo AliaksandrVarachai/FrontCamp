@@ -3,7 +3,7 @@ const NEWS_TYPES = {
     "fast": 2,
 }
 
-const debug_mode = true;
+let debug_mode = true;
 
 //let current_news_type = NEWS_TYPES.ordinary;
 let current_news_type = NEWS_TYPES.fast;

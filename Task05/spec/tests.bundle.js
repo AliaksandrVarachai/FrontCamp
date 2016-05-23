@@ -1,7 +1,3 @@
 var context = require.context('.', true, /.+\.spec\.js$/);
-//context.keys().forEach(context);
-context.keys().forEach(function(key) {
-  console.log(key);
-  context(key);
-});
+context.keys().forEach(context);
 module.exports = context;

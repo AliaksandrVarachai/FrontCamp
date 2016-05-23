@@ -32,10 +32,11 @@ module.exports = {
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)
 		}),
-		new webpack.optimize.CommonsChunkPlugin({
+		//we don't need common chunk because we have only one entry
+		/*new webpack.optimize.CommonsChunkPlugin({
 			name: "/chunks/common-chunk"
 			//minChunks: 2 //we can ['module1', 'module2'] - common code for modules
-		}),
+		}),*/
 		new ExtractTextPlugin("styles/styles.css", {allChunks: true}),
 		new webpack.OldWatchingPlugin()  //fix of a bug: ExtractTextPlugin disables watch 
 	],
