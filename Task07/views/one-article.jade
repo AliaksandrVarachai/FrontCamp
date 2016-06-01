@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 One articles:
+    table
+        tr
+            td #{article.title}
+            td #{article.author}
+            td #{article.date}
+            td #{article.text}
+            td
+                //img(src=article.image)
+                img(height="100", width="100", src=article.image)
+
