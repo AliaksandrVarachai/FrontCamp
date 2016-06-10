@@ -1,0 +1,31 @@
+<article id="article-{{_id}}">
+    <header>
+        <h1>{{title}}</h1>
+        <div class="author">{{authorName}}</div>
+        <div class="date">{{formattedDate}}</div>
+    </header>
+    <menu>
+        <!--<button id="article-update">Update</button>-->
+        <button id="article-delete">Delete</button>
+    </menu>
+    <div class="article-text">
+        {{text}}
+    </div>
+    <div class="comments">
+        <div class="comments-header">Comments:</div>
+        {{#each comments}}
+        <div class="comment">
+            <header>
+                <div class="author">Ivan Petrov</div>
+                <div class="date">2016-03-12</div>
+            </header>
+            <div class="comment-text">
+                {{text}}
+            </div>
+        </div>
+        {{/each}}
+        <div class="comments-footer">
+            <button id="comment-add">Add comment</button>
+        </div>
+    </div>
+</article>

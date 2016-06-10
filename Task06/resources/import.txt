@@ -1,0 +1,3 @@
+mongoimport --db blog --collection articles --drop --file d:/FrontCamp/Task06/resources/articles.json
+
+mongoimport --db blog --collection authors --drop --file d:/FrontCamp/Task06/resources/authors.json

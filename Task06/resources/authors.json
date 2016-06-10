@@ -1,0 +1,28 @@
+{
+  "_id": 1,
+  "name": "Lev Tolstoy",
+  "emails": ["lev_tolstoy@mail.ru"],
+  "login": "Leo",
+  "password-hash": "1111"
+}
+{
+  "_id": 2,
+  "name": "Mark Twain",
+  "emails": ["mark_twain@yandex.ru", "mark_twain999@gmail.com"],
+  "login": "Sailor",
+  "password-hash": "2222"
+}
+{
+  "_id": 3,
+  "name": "Herbert Wells",
+  "emails": ["wells-666@yahoo.com"],
+  "login": "Stalker",
+  "password-hash": "3333"
+}
+{
+  "_id": 4,
+  "name": "Mr Bot",
+  "emails": ["895642355458@mail.ru", "54878932485@yandex.ru"],
+  "login": "qwerty",
+  "password-hash": "4444"
+}
