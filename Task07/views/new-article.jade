@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    form(name='add-form', action='/articles/add', method='POST', enctype="multipart/form-data")
+        div
+            input(type='text' name='title', class='title', value='title')
+        div
+            //input(type='file', class='file', value='#name')
+            input(type='file', name='file', class='file', value='file')
+        dev
+            textarea(class='text', )
+        div
+            input(type='button', class='bt-add', value='fdsfsd')
+        div
+            input(type='submit', value='Send article')
+
+        script(src='/javascripts/app.js')
+
+
+
+
+

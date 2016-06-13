@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../styles/styles.css"/>
+    <script src="../libs/handlebars-v4.0.5.js"></script>
+</head>
+<body>
+    <!--<form name="main-form">-->
+    <main>
+        <header class="status-line" id="status-line">
+            <a href="#" class="login-logout">login/logout</a>
+            <span id="login-status" class="login-status">Administrator</span>
+        </header>
+        <menu>
+            <select name="select-find" id="select-find">
+                <option value="all">Show all (sorted by date)</option>
+                <option value="all-author">Show all author's articles</option>
+                <option value="last">Show the last</option>
+            </select>
+            <input type="text" id="author-name" placeholder="Author's name"/>
+            <button id="add-article" class="menu-button">Add article</button>
+        </menu>
+        <div id="response-container"></div>
+    </main>
+    <!--</form>-->
+    <script id="handlebars-precompiled-templates" src="../helpers/build.js"></script>
+    <script src="../scripts/client-script.js"></script>
+</body>
+</html>

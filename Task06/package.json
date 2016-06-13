@@ -1,0 +1,20 @@
+{
+  "name": "task-6",
+  "version": "1.0.0",
+  "description": "MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "handlebars helpers -f helpers/build.js -k each",
+    "start": "node servers/http-server"
+  },
+  "keywords": [
+    "DB",
+    "MongoDB",
+    "NodeJS"
+  ],
+  "author": "Alexandr Vorochai",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.1.21"
+  }
+}
