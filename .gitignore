@@ -16,6 +16,8 @@
 **/Task03/experiments-require/public/*.js
 **/Task03/experiments-require/public/*.js.map
 **/Task06/helpers/build.js
+**/Task09/dist
+**/Task09_withRedux/dist
 
 # test coverage reports
 **/coverage
