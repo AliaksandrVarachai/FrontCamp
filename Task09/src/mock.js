@@ -5,15 +5,15 @@ angular.module('app-mock', ['ngMockE2E'])
     .run(($httpBackend) => {
         let data = [
             {
-                "id": 1,
+                "id": 0,
                 "text": "Some text 111-111"
             },
             {
-                "id": 2,
+                "id": 1,
                 "text": "Some text 2"
             },
             {
-                "id": 3,
+                "id": 2,
                 "text": "Some text 3aaaaa"
             }
         ];
@@ -24,8 +24,10 @@ angular.module('app-mock', ['ngMockE2E'])
         $httpBackend.whenGET(/data\/\w+$/).respond(function(method, url, params) {
             console.dir(method);
             console.dir(url);
+            var id = url.match(/[^\/]+$/g)[0];
+            console.dir(id);
             console.dir(params);
-            var result = data[0]; //TODO: params.id
+            var result = data[id]; //TODO: params.id
             return [200, result];
         });
 

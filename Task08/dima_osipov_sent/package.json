@@ -1,0 +1,38 @@
+{
+  "name": "react-node-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "webpack -d --watch",
+    "api-server": "node api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://demns@bitbucket.org/demns/react-node-mongo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/demns/react-node-mongo#readme",
+  "dependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "eslint-plugin-react": "^5.1.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.20",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "react-hot-loader": "^1.3.0"
+  }
+}
