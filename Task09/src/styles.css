@@ -1,0 +1,22 @@
+.short-article {
+    margin: 10px 0;
+    padding: 10px;
+    background: greenyellow;
+    line-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.short-article:hover {
+    cursor: pointer;
+    background: limegreen;
+}
+.post-id {
+    font-weight: bold;
+    font-size: 120%;
+}
+.full-article {
+    margin: 10px 0;
+    padding: 10px;
+    background: greenyellow;
+}

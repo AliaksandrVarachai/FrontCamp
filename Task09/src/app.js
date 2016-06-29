@@ -1,3 +1,4 @@
+import "./styles.css";
 import angular from 'angular';
 import ngResource from 'angular-resource';
 import 'angular-ui-router';
@@ -11,7 +12,7 @@ angular.module('app', ['ngResource', 'ui.router'])
     .component('posts', PostsComponent.createInstance())
     .component('postDetailed', new PostDetailedComponent())
     .service('postsService', PostsService)
-    .config(($stateProvider, $urlRouterProvider) => {
+    .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) => {
         $urlRouterProvider.otherwise("/");
         $stateProvider.state('postlist', {
             url: "/",
@@ -20,8 +21,7 @@ angular.module('app', ['ngResource', 'ui.router'])
             url: "/post/:id",
             template: "<post-detailed post='post'></post-detailed>",
             controller: ($scope, postsService, $stateParams) => {
-
                 $scope.post = postsService.getOneObject($stateParams.id);
             }
         });
-    });
+    }]);

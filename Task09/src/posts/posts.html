@@ -1,6 +1,10 @@
 <div ng-repeat="post in posts.list">
     <!--<span ng-click="posts.selectPost(post)">{{post.text}}</span>-->
-    <span ng-click="posts.selectPost(post)">{{post.text}} -> {{post.id}}</span>
+
+    <div ng-click="posts.selectPost(post)" class="short-article">
+        <span class="post-id">#{{post.id}}: </span>
+        {{post.text}}
+    </div>
 </div>
 
 <!--<post-detailed post="posts.post" post-click="posts.increaseClicks(posts.post)"></post-detailed>-->

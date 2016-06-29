@@ -9,7 +9,7 @@ class PostsController {
         //}, {
         //    text: 'Some text 2'
         //}];
-        this.list = postsService.getData()
+        this.list = postsService.getData();
         //postsService.getData().then((data)=> {
         //    this.list = post;
         //});

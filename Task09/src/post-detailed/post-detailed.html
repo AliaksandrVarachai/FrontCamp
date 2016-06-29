@@ -1,5 +1,7 @@
-<div>
+<div class="full-article">
     {{postDetailed.post.text}}
 </div>
 <!--<button ng-click="posts.encreaseClicks(posts.post)">Clicks: {{postDetailed.post.click}}</button>-->
-<button ng-click="postDetailed.postClick()">Clicks: {{postDetailed.post.click}}</button>
+<!--<button ng-click="postDetailed.postClick()">Clicks: {{postDetailed.post.click}}</button>-->
+<!--<button ng-click="alert('My life is pain!!!')">Do not click me</button>-->
+<button ng-click="count=count+1" ng-init="count=0">Do not click me: {{count}}</button>
