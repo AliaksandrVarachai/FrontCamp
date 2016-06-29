@@ -17,7 +17,7 @@ module.exports = {
         filename: "bundle.js",
         publicPath: "/"
     },
-    //watch: true,
+    watch: true,
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ],
